@@ -326,7 +326,7 @@ We highly recommend setting the `$NXF_SINGULARITY_CACHEDIR` environment variable
 If found, the tool will fetch the Singularity images to this directory first before copying to the target output archive / directory.
 Any images previously fetched will be found there and copied directly - this includes images that may be shared with other pipelines or previous pipeline version downloads or download attempts.
 
-If you are running the download on the same system where you will be running the pipeline (eg. a shared filesystem where Nextflow won't have an internet connection at a later date), you can choose to _only_ use the cache via a prompt or cli options `--singularity-cache-only` / `--singularity-cache-copy`.
+If you are running the download on the same system where you will be running the pipeline (e.g. a shared filesystem where Nextflow won't have an internet connection at a later date), you can choose to _only_ use the cache via a prompt or cli options `--singularity-cache-only` / `--singularity-cache-copy`.
 
 This instructs `nf-core download` to fetch all Singularity images to the `$NXF_SINGULARITY_CACHEDIR` directory but does _not_ copy them to the workflow archive / directory.
 The workflow config file is _not_ edited. This means that when you later run the workflow, Nextflow will just use the cache folder directly.
@@ -340,12 +340,12 @@ The Singularity image download finds containers using two methods:
 2. It scrapes any files it finds with a `.nf` file extension in the workflow `modules` directory for lines
    that look like `container = "xxx"`. This is the typical method for DSL2 pipelines, which have one container per process.
 
-Some DSL2 modules have container addresses for docker (eg. `quay.io/biocontainers/fastqc:0.11.9--0`) and also URLs for direct downloads of a Singularity continaer (eg. `https://depot.galaxyproject.org/singularity/fastqc:0.11.9--0`).
+Some DSL2 modules have container addresses for docker (e.g. `quay.io/biocontainers/fastqc:0.11.9--0`) and also URLs for direct downloads of a Singularity continaer (e.g. `https://depot.galaxyproject.org/singularity/fastqc:0.11.9--0`).
 Where both are found, the download URL is preferred.
 
 Once a full list of containers is found, they are processed in the following order:
 
-1. If the target image already exists, nothing is done (eg. with `$NXF_SINGULARITY_CACHEDIR` and `--singularity-cache-only` specified)
+1. If the target image already exists, nothing is done (e.g. with `$NXF_SINGULARITY_CACHEDIR` and `--singularity-cache-only` specified)
 2. If found in `$NXF_SINGULARITY_CACHEDIR` and `--singularity-cache-only` is _not_ specified, they are copied to the output directory
 3. If they start with `http` they are downloaded directly within Python (default 4 at a time, you can customise this with `--parallel-downloads`)
 4. If they look like a Docker image name, they are fetched using a `singularity pull` command
@@ -434,7 +434,7 @@ fake_command: nf-core lint
 
 ![`nf-core lint`](docs/images/nf-core-lint.svg)
 
-You can use the `-k` / `--key` flag to run only named tests for faster debugging, eg: `nf-core lint -k files_exist -k files_unchanged`. The `nf-core lint` command lints the current working directory by default, to specify another directory you can use `--dir <directory>`.
+You can use the `-k` / `--key` flag to run only named tests for faster debugging, e.g. `nf-core lint -k files_exist -k files_unchanged`. The `nf-core lint` command lints the current working directory by default, to specify another directory you can use `--dir <directory>`.
 
 ### Linting documentation
 
@@ -500,7 +500,7 @@ To help developers working with pipeline schema, nf-core tools has three `schema
 Nextflow can take input parameters in a JSON or YAML file when running a pipeline using the `-params-file` option.
 This command validates such a file against the pipeline schema.
 
-Usage is `nf-core schema validate <pipeline> <parameter file>`. eg with the pipeline downloaded [above](#download-pipeline), you can run:
+Usage is `nf-core schema validate <pipeline> <parameter file>`. e.g. with the pipeline downloaded [above](#download-pipeline), you can run:
 
 <!-- RICH-CODEX
 working_dir: tmp
@@ -522,7 +522,7 @@ If no existing schema is found it will create one for you.
 Once built, the tool can send the schema to the nf-core website so that you can use a graphical interface to organise and fill in the schema.
 The tool checks the status of your schema on the website and once complete, saves your changes locally.
 
-Usage is `nf-core schema build -d <pipeline_directory>`, eg:
+Usage is `nf-core schema build -d <pipeline_directory>`, e.g.
 
 <!-- RICH-CODEX
 working_dir: tmp/nf-core-nextbigthing
@@ -544,7 +544,7 @@ There are four flags that you can use with this command:
 The pipeline schema is linted as part of the main pipeline `nf-core lint` command,
 however sometimes it can be useful to quickly check the syntax of the JSONSchema without running a full lint run.
 
-Usage is `nf-core schema lint <schema>`, eg:
+Usage is `nf-core schema lint <schema>`, e.g.
 
 <!-- RICH-CODEX
 working_dir: tmp/nf-core-nextbigthing
@@ -558,7 +558,7 @@ When releasing a new version of a nf-core pipeline, version numbers have to be u
 
 The command uses results from the linting process, so will only work with workflows that pass these tests.
 
-Usage is `nf-core bump-version <new_version>`, eg:
+Usage is `nf-core bump-version <new_version>`, e.g.
 
 <!-- RICH-CODEX
 working_dir: tmp/nf-core-nextbigthing
@@ -580,7 +580,7 @@ Note that pipeline synchronisation happens automatically each time nf-core/tools
 **As such, you do not normally need to run this command yourself!**
 
 This command takes a pipeline directory and attempts to run this synchronisation.
-Usage is `nf-core sync`, eg:
+Usage is `nf-core sync`, e.g.
 
 <!-- RICH-CODEX
 working_dir: tmp/nf-core-nextbigthing
@@ -640,7 +640,7 @@ and then specify the remote the same way you would do with a public remote repos
 
 ### List modules
 
-The `nf-core modules list` command provides the subcommands `remote` and `local` for listing modules installed in a remote repository and in the local pipeline respectively. Both subcommands allow to use a pattern for filtering the modules by keywords eg: `nf-core modules list <subcommand> <keyword>`.
+The `nf-core modules list` command provides the subcommands `remote` and `local` for listing modules installed in a remote repository and in the local pipeline respectively. Both subcommands allow to use a pattern for filtering the modules by keywords e.g. `nf-core modules list <subcommand> <keyword>`.
 
 #### List remote modules
 
@@ -688,7 +688,7 @@ working_dir: tmp/nf-core-nextbigthing
 
 ![`nf-core modules install abacas`](docs/images/nf-core-modules-install.svg)
 
-You can pass the module name as an optional argument to `nf-core modules install` instead of using the cli prompt, eg: `nf-core modules install fastqc`. You can specify a pipeline directory other than the current working directory by using the `--dir <pipeline dir>`.
+You can pass the module name as an optional argument to `nf-core modules install` instead of using the cli prompt, e.g. `nf-core modules install fastqc`. You can specify a pipeline directory other than the current working directory by using the `--dir <pipeline dir>`.
 
 There are three additional flags that you can use when installing a module:
 
@@ -706,7 +706,7 @@ working_dir: tmp/nf-core-nextbigthing
 
 ![`nf-core modules update --all --no-preview`](docs/images/nf-core-modules-update.svg)
 
-You can pass the module name as an optional argument to `nf-core modules update` instead of using the cli prompt, eg: `nf-core modules update fastqc`. You can specify a pipeline directory other than the current working directory by using the `--dir <pipeline dir>`.
+You can pass the module name as an optional argument to `nf-core modules update` instead of using the cli prompt, e.g. `nf-core modules update fastqc`. You can specify a pipeline directory other than the current working directory by using the `--dir <pipeline dir>`.
 
 There are five additional flags that you can use with this command:
 
@@ -759,7 +759,7 @@ working_dir: tmp/nf-core-nextbigthing
 
 ![`nf-core modules remove abacas`](docs/images/nf-core-modules-remove.svg)
 
-You can pass the module name as an optional argument to `nf-core modules remove` instead of using the cli prompt, eg: `nf-core modules remove fastqc`. To specify the pipeline directory, use `--dir <pipeline_dir>`.
+You can pass the module name as an optional argument to `nf-core modules remove` instead of using the cli prompt, e.g. `nf-core modules remove fastqc`. To specify the pipeline directory, use `--dir <pipeline_dir>`.
 
 ### Create a patch file for a module
 
